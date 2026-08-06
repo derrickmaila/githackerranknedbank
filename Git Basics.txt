@@ -1,0 +1,30 @@
+Initialize and snapshot work.
+
+git init
+printf "Hello\n" > README.md
+git add README.md
+git commit -m "Add README"
+
+After creating one commit, explore status and history.
+git status
+git log --oneline --graph --decorate --all
+
+Stage precisely with patch mode, then commit meaningful messages.
+echo "tip" >> README.md
+git add -p README.md
+git commit -m "Add quick tip to README"
+
+Create a remote, fetch, and push safely.
+
+git remote add origin https://github.com/user/repo.git
+git fetch origin
+git branch --set-upstream-to=origin/main main
+git push -u origin main
+
+Recover from mistakes without losing work by using the stash and restore.
+echo "WIP" >> app.js
+git stash push -m "wip app"
+git pull --rebase
+git stash pop
+
+Between snippets remember: the index is authoritative for the next commit. Stage only what you intend to record.
