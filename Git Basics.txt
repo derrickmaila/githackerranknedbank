@@ -28,3 +28,30 @@ git pull --rebase
 git stash pop
 
 Between snippets remember: the index is authoritative for the next commit. Stage only what you intend to record.
+
+
+
+what does of this commands do? echo "WIP" >> app.js git stash push -m "wip app" git pull --rebase git stash pop
+
+echo "WIP" >> app.js
+
+Adds the text "WIP" to the end of app.js
+This simulates you making changes to a file (work in progress)
+git stash push -m "wip app"
+
+Stashes your uncommitted changes (both staged and unstaged)
+The -m "wip app" adds a message so you can identify this stash later
+Your working tree becomes clean — changes are safely stored away
+Use case: You're mid-feature but need to switch branches urgently (e.g., fix a bug)
+
+git pull --rebase
+
+Fetches the latest changes from the remote
+Rebases your local commits on top of the remote branch (instead of merging)
+This keeps history linear and cleaner than a merge commit
+Why rebase here? You stashed your work, so there's nothing to conflict with
+git stash pop
+
+Retrieves your stashed changes and applies them back to your working tree
+Removes the stash after applying (unlike git stash apply, which keeps it)
+Your WIP is restored, ready to continue
