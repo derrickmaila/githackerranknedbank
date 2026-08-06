@@ -27,6 +27,7 @@ git stash push -m "wip app"
 git pull --rebase
 git stash pop
 
+
 Between snippets remember: the index is authoritative for the next commit. Stage only what you intend to record.
 
 
@@ -55,3 +56,27 @@ git stash pop
 Retrieves your stashed changes and applies them back to your working tree
 Removes the stash after applying (unlike git stash apply, which keeps it)
 Your WIP is restored, ready to continue
+
+Gitignore
+Create common patterns and verify what Git sees.
+echo "node_modules/" >> .gitignore
+echo "*.log" >> .gitignore
+echo "!.env.example" >> .gitignore
+printf "PORT=8080\n" > .env
+
+List untracked files after rules are in place.
+git status --ignored
+
+Use directory-scoped .gitignore for generated docs.
+
+mkdir -p docs/build
+echo "build/" > docs/.gitignore
+
+Configure a global ignore file for OS artifacts.
+
+git config --global core.excludesfile ~/.gitignore_global
+echo ".DS_Store" >> ~/.gitignore_global
+echo "Thumbs.db"   >> ~/.gitignore_global
+
+Stop tracking a file that slipped into history while keeping it locally.
+git rm --cached path/to/file && echo "path/to/file" >> .gitignore

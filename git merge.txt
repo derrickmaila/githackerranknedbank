@@ -1,0 +1,31 @@
+Create and switch branches, then integrate.
+
+bash
+git switch -c feature/search
+edit src/search.js
+git add src/search.js
+git commit -m "Add basic search"
+Update from main and rebase your work to test integration locally.
+
+bash
+git fetch origin
+git switch feature/search
+git rebase origin/main
+Resolve conflicts interactively.
+
+bash
+git status
+git add resolved/file.js
+git rebase --continue
+
+
+Merge into main using a merge commit to preserve context.
+
+bash
+git switch main
+git merge --no-ff feature/search -m "Merge feature/search"
+Delete merged branches locally and upstream.
+
+bash
+git branch -d feature/search
+git push origin --delete feature/search
