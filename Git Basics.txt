@@ -55,3 +55,42 @@ git stash pop
 Retrieves your stashed changes and applies them back to your working tree
 Removes the stash after applying (unlike git stash apply, which keeps it)
 Your WIP is restored, ready to continue
+
+
+Add a missing file and amend the last commit without changing its message.
+
+bash
+echo "tests" > .gitkeep
+git add .gitkeep
+git commit --amend --no-edit
+Revise the message directly.
+
+bash
+git commit --amend -m "Refactor parser: extract tokenizer"
+Force-push only when appropriate and with coordination.
+
+bash
+git push --force-with-lease
+Amend staged hunks precisely using patch mode before amending.
+
+bash
+git add -p src/parser.js
+git commit --amend --no-edit
+
+Recover the pre-amend state if necessary by keeping the reflog handy.
+
+bash
+git reflog
+# find the previous HEAD, then
+git reset --hard <old_sha>
+
+How to complete this safelyRun the reflog command in your terminal to see a chronological record of every time your HEAD pointer has moved:bashgit reflog
+Use code with caution.Identify the correct state from the output. The log will look similar to this:textab12cd3 HEAD@{0}: reset: moving to HEAD~1
+ef56gh7 HEAD@{1}: commit: Added the new login feature
+ij89kl0 HEAD@{2}: checkout: moving from main to dev
+
+Use code with caution.Execute the hard reset to the target state. You can use either the specific commit SHA or the simpler HEAD@{n} shortcut identifier displayed in the log:bash# Option A: Using the SHA
+git reset --hard ef56gh7
+
+# Option B: Using the HEAD relative shortcut (often safer and easier)
+git reset --hard HEAD@{1}
