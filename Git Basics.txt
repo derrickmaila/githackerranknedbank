@@ -57,7 +57,6 @@ Retrieves your stashed changes and applies them back to your working tree
 Removes the stash after applying (unlike git stash apply, which keeps it)
 Your WIP is restored, ready to continue
 
-<<<<<<< HEAD
 
 Add a missing file and amend the last commit without changing its message.
 
@@ -96,7 +95,6 @@ git reset --hard ef56gh7
 
 # Option B: Using the HEAD relative shortcut (often safer and easier)
 git reset --hard HEAD@{1}
-=======
 Gitignore
 Create common patterns and verify what Git sees.
 echo "node_modules/" >> .gitignore
@@ -120,4 +118,3 @@ echo "Thumbs.db"   >> ~/.gitignore_global
 
 Stop tracking a file that slipped into history while keeping it locally.
 git rm --cached path/to/file && echo "path/to/file" >> .gitignore
->>>>>>> 346eae38b833d6bdf63343848f0081586e87b548
