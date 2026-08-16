@@ -1,0 +1,17 @@
+History Rewriting in Practice
+Beyond basic commit amendments, developers often rewrite history to clean up work before merging it into the main branch. This might include squashing multiple small commits into one meaningful change or editing messages for clarity.
+
+🔑 Key Concepts
+Squash commits — combine multiple commits into one.
+Reorder commits — adjust the sequence for logical progression.
+Edit messages — update commit messages for clarity.
+⚙️ Real World Example
+bash
+# Start interactive rebase for last 5 commits
+git rebase -i HEAD~5
+
+# Change 'pick' to 'squash' or 'edit' as needed
+⚠️ Common Mistakes to Avoid
+Over-squashing and losing context.
+Incorrectly editing commits leading to build failures.
+
