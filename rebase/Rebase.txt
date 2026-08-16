@@ -1,0 +1,50 @@
+Rebasing in Practice
+After understanding the basics, let’s dive deeper into how rebasing works in different scenarios, such as when feature branches diverge heavily from the main branch. Rebasing is especially useful for developers who want to ensure their feature branches always stay up to date with the mainline history without adding unnecessary merge commits.
+
+🔑 Key Concepts
+Conflict resolution during rebase — conflicts are common when history has diverged.
+Abort and restart — git rebase --abort can reset rebase progress.
+Interactive editing — git rebase -i allows more granular control.
+⚙️ Real World Example
+bash
+# Rebase with conflicts
+git checkout feature
+git rebase main
+
+# Resolve conflicts
+vim conflicted_file.txt
+git add conflicted_file.txt
+
+# Continue rebase
+git rebase --continue
+⚠️ Common Mistakes to Avoid
+Rebasing without testing changes.
+Forgetting to push --force after rebasing a branch that’s already pushed.
+Further learning resources
+
+
+Best Practices with Rebasing
+Rebasing can greatly improve the readability of your repository history if used properly. However, misuse can lead to lost commits or major collaboration issues. Following best practices ensures rebase is a safe and efficient workflow.
+
+✅ Best Practices
+Always rebase before merging into the main branch.
+Avoid rebasing branches that other developers use.
+Document rebase strategies in team guidelines.
+⚙️ Example Workflow
+bash
+# Update local main
+git checkout main
+git pull origin main
+
+# Rebase feature onto updated main
+git checkout feature
+git rebase main
+
+# Push safely
+git push origin feature --force-with-lease
+⚠️ Common Pitfalls
+Using --force without --force-with-lease can overwrite others’ work.
+Rebasing long-lived branches frequently leads to conflicts.
+Further learning resources
+
+
